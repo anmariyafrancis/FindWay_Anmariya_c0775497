@@ -1,24 +1,87 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Gem-Dc-AhB">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <scene sceneID="X4E-UZ-I3A">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                <viewController id="Gem-Dc-AhB" customClass="ViewController" customModule="FindWay_Anmariya_c0775497" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Qvz-Ms-ojs">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="XGE-vU-fZJ">
+                                <rect key="frame" x="0.0" y="92" width="414" height="770"/>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YRq-bd-F5m" userLabel="Find My Way">
+                                <rect key="frame" x="368" y="800" width="25.5" height="23.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="23.5" id="An0-AL-XNZ"/>
+                                    <constraint firstAttribute="width" constant="25.5" id="YEW-Wv-Qru"/>
+                                </constraints>
+                                <state key="normal" image="location.fill" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                </state>
+                                <connections>
+                                    <action selector="findMyWay:" destination="Gem-Dc-AhB" eventType="touchUpInside" id="w6W-fo-WfI"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="FIND WAY" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b95-Eb-tbo">
+                                <rect key="frame" x="4" y="62" width="406" height="47"/>
+                                <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="PIn-Xg-BDb">
+                                <rect key="frame" x="140" y="788" width="135" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="31" id="jC8-Bn-MRb"/>
+                                    <constraint firstAttribute="width" constant="135" id="pdg-oN-JBt"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Car"/>
+                                    <segment title="Walk"/>
+                                </segments>
+                                <connections>
+                                    <action selector="indexChanged:" destination="Gem-Dc-AhB" eventType="valueChanged" id="Ec7-CP-1q5"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="XGE-vU-fZJ" firstAttribute="top" secondItem="2BH-GI-THy" secondAttribute="top" constant="48" id="9QX-qo-pM5"/>
+                            <constraint firstItem="b95-Eb-tbo" firstAttribute="leading" secondItem="2BH-GI-THy" secondAttribute="leading" constant="4" id="GzX-Dy-vsy"/>
+                            <constraint firstItem="XGE-vU-fZJ" firstAttribute="leading" secondItem="2BH-GI-THy" secondAttribute="leading" id="N73-zg-avd"/>
+                            <constraint firstItem="b95-Eb-tbo" firstAttribute="top" secondItem="2BH-GI-THy" secondAttribute="top" constant="18" id="OYh-Rl-bpG"/>
+                            <constraint firstItem="2BH-GI-THy" firstAttribute="bottom" secondItem="YRq-bd-F5m" secondAttribute="bottom" constant="38.5" id="PQ5-4D-KtZ"/>
+                            <constraint firstItem="2BH-GI-THy" firstAttribute="trailing" secondItem="XGE-vU-fZJ" secondAttribute="trailing" id="Uyz-pW-y8V"/>
+                            <constraint firstItem="2BH-GI-THy" firstAttribute="bottom" secondItem="XGE-vU-fZJ" secondAttribute="bottom" id="VeY-iV-2Ao"/>
+                            <constraint firstItem="2BH-GI-THy" firstAttribute="trailing" secondItem="YRq-bd-F5m" secondAttribute="trailing" constant="20.5" id="fdb-P8-Kpv"/>
+                            <constraint firstItem="2BH-GI-THy" firstAttribute="trailing" secondItem="b95-Eb-tbo" secondAttribute="trailing" constant="4" id="hvC-8C-KDU"/>
+                            <constraint firstItem="PIn-Xg-BDb" firstAttribute="top" secondItem="b95-Eb-tbo" secondAttribute="bottom" constant="700" id="l1C-Vf-Yat"/>
+                            <constraint firstItem="2BH-GI-THy" firstAttribute="bottom" secondItem="PIn-Xg-BDb" secondAttribute="bottom" constant="43" id="ozU-uV-zbP"/>
+                            <constraint firstItem="XGE-vU-fZJ" firstAttribute="top" secondItem="b95-Eb-tbo" secondAttribute="bottom" constant="4" id="rs4-lh-WWW"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="2BH-GI-THy"/>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="XGE-vU-fZJ" id="cLE-gz-L4Q"/>
+                        <outlet property="segmentType" destination="PIn-Xg-BDb" id="tc2-vt-VuH"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3mS-rB-9bK" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="131.8840579710145" y="119.86607142857142"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="location.fill" catalog="system" width="128" height="115"/>
+    </resources>
 </document>
