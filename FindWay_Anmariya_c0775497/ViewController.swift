@@ -15,9 +15,6 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var segmentType: UISegmentedControl!
     
-    let latitude: CLLocationDegrees = 43.64
-    let longitude: CLLocationDegrees = -79.38
-    
     var locationManager = CLLocationManager()
     var aLat: CLLocationDegrees??
     var aLon: CLLocationDegrees??
@@ -40,11 +37,10 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         locationManager.requestWhenInUseAuthorization()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.distanceFilter = kCLDistanceFilterNone
-        
         locationManager.startUpdatingLocation()
         
         mapView.showsUserLocation = true
-        //mapView.isZoomEnabled = false
+        mapView.isZoomEnabled = false
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(doubleTapped))
         tap.numberOfTapsRequired = 2
@@ -55,20 +51,11 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
       func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
         {
             
-           // location = locations.first!
-            //let coordinateRegion = MKCoordinateRegion(center: location!.coordinate, latitudinalMeters: 1000, longitudinalMeters:1000)
-            //mapView.setRegion(coordinateRegion, animated: true)
-            let userLocation = locations[0]
-            
-            let latitude = userLocation.coordinate.latitude
-            let longitude = userLocation.coordinate.longitude
-    
-            displayLocation(latitude:latitude,longitude:longitude,title:"Your Location",subtitle:"You are here")
-            //displayLocation(latitude: latitude, longitude: longitude, title: "Your Location", subtitle: "you are here")
-            //locationManager.stopUpdatingLocation()
+            location = locations.first!
+            let coordinateRegion = MKCoordinateRegion(center: location!.coordinate, latitudinalMeters: 1000, longitudinalMeters:1000)
+            mapView.setRegion(coordinateRegion, animated: true)
+            locationManager.stopUpdatingLocation()
         }
-    
-    
     
      func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         let renderer = MKPolylineRenderer(polyline: overlay as! MKPolyline)
@@ -78,7 +65,8 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     }
     
     
-      @objc func doubleTapped(sender: UIGestureRecognizer){
+      @objc func doubleTapped(sender: UIGestureRecognizer)
+        {
            
             let locationInView = sender.location(in: mapView)
             let locationOnMap = mapView.convert(locationInView, toCoordinateFrom: mapView)
@@ -86,8 +74,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         }
     
       func yourWay(){
-            self.mapView.removeOverlays(self.mapView.overlays)
-           
+        self.mapView.removeOverlays(self.mapView.overlays)
         let request = MKDirections.Request()
         request.source = MKMapItem(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: (location?.coordinate.latitude)!, longitude: (location?.coordinate.longitude)!), addressDictionary: nil))
         
@@ -125,8 +112,12 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             }
         }
     }
-    func addAnnotation(location: CLLocationCoordinate2D){
-           let oldAnnotations = self.mapView.annotations
+    
+    
+     func addAnnotation(location: CLLocationCoordinate2D)
+        {
+           
+            let oldAnnotations = self.mapView.annotations
             self.mapView.removeAnnotations(oldAnnotations)
             let annotation = MKPointAnnotation()
             annotation.coordinate = location
