@@ -67,16 +67,14 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     }
     
     
-      @objc func doubleTapped(sender: UIGestureRecognizer)
-        {
+      @objc func doubleTapped(sender: UIGestureRecognizer){
            
             let locationInView = sender.location(in: mapView)
             let locationOnMap = mapView.convert(locationInView, toCoordinateFrom: mapView)
             addAnnotation(location: locationOnMap)
         }
     
-      func yourWay()
-    {
+      func yourWay(){
             self.mapView.removeOverlays(self.mapView.overlays)
            
         let request = MKDirections.Request()
@@ -116,12 +114,8 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             }
         }
     }
-    
-    
-     func addAnnotation(location: CLLocationCoordinate2D)
-        {
-           
-            let oldAnnotations = self.mapView.annotations
+    func addAnnotation(location: CLLocationCoordinate2D){
+           let oldAnnotations = self.mapView.annotations
             self.mapView.removeAnnotations(oldAnnotations)
             let annotation = MKPointAnnotation()
             annotation.coordinate = location
