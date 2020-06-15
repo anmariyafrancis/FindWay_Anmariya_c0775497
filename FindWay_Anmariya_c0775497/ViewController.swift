@@ -22,11 +22,11 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     
      @IBAction func indexChanged(_ sender: Any) {
            
-            route()
- }
+            yourWay()
+    }
      @IBAction func findMyWay(_ sender: Any) {
-            route()
-  }
+            yourWay()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +40,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         locationManager.startUpdatingLocation()
         
         mapView.showsUserLocation = true
-        mapView.isZoomEnabled = false
+        //mapView.isZoomEnabled = false
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(doubleTapped))
         tap.numberOfTapsRequired = 2
@@ -56,6 +56,8 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             mapView.setRegion(coordinateRegion, animated: true)
             locationManager.stopUpdatingLocation()
         }
+    
+    
     
      func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         let renderer = MKPolylineRenderer(polyline: overlay as! MKPolyline)
@@ -73,7 +75,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             addAnnotation(location: locationOnMap)
         }
     
-      func route()
+      func yourWay()
     {
             self.mapView.removeOverlays(self.mapView.overlays)
            
