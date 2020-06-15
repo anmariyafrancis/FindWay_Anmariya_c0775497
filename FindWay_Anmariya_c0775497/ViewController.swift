@@ -56,33 +56,18 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         {
             
            // location = locations.first!
-            //
-            
+            //let coordinateRegion = MKCoordinateRegion(center: location!.coordinate, latitudinalMeters: 1000, longitudinalMeters:1000)
+            //mapView.setRegion(coordinateRegion, animated: true)
             let userLocation = locations[0]
             
             let latitude = userLocation.coordinate.latitude
             let longitude = userLocation.coordinate.longitude
     
-            displayLocation(latitude: latitude, longitude: longitude, title: "Your Location", subtitle: "you are here")
+            displayLocation(latitude:latitude,longitude:longitude,title:"Your Location",subtitle:"You are here")
+            //displayLocation(latitude: latitude, longitude: longitude, title: "Your Location", subtitle: "you are here")
             //locationManager.stopUpdatingLocation()
         }
     
-        func displayLocation(latitude: CLLocationDegrees, longitude: CLLocationDegrees, title: String, subtitle: String) {
-               // 2 - define delta latitude and delta longitude for the span
-               let latDelta: CLLocationDegrees = 0.05
-               let lngDelta: CLLocationDegrees = 0.05
-               
-               // 3 - creating the span and location coordinate and finally the region
-               let span = MKCoordinateSpan(latitudeDelta: latDelta, longitudeDelta: lngDelta)
-               let location = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-               let region = MKCoordinateRegion(center: location, span: span)
-               
-               // 4 - set region for the map
-            
-               mapView.setRegion(coordinateRegion, animated: true)
-               
-        
-           }
     
     
      func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
