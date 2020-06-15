@@ -53,7 +53,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             
             location = locations.first!
             let coordinateRegion = MKCoordinateRegion(center: location!.coordinate, latitudinalMeters: 1000, longitudinalMeters:1000)
-            mapView.setRegion(coordinateRegion, animated: true)
+        mapView.setRegion(coordinateRegion, animated: true)
             locationManager.stopUpdatingLocation()
         }
     
