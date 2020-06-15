@@ -83,7 +83,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         if(aLat == nil || aLon == nil)
         {
                 let alertController = UIAlertController(title: "Error", message:
-                "Please select your destination", preferredStyle: .alert)
+                "Please select your destination!!", preferredStyle: .alert)
                 alertController.addAction(UIAlertAction(title: "OK", style: .default))
 
                 self.present(alertController, animated: true, completion: nil)
