@@ -16,13 +16,13 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     @IBOutlet weak var segmentType: UISegmentedControl!
     
     var locationManager = CLLocationManager()
+    
     var aLat: CLLocationDegrees??
     var aLon: CLLocationDegrees??
     var location: CLLocation?
     
-     @IBAction func indexChanged(_ sender: Any) {
-           
-            yourWay()
+    @IBAction func indexChanged(_ sender: Any) {
+           yourWay()
     }
      @IBAction func findMyWay(_ sender: Any) {
             yourWay()
@@ -35,8 +35,10 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         locationManager.delegate = self
        
         locationManager.requestWhenInUseAuthorization()
+        
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.distanceFilter = kCLDistanceFilterNone
+        
         locationManager.startUpdatingLocation()
         
         mapView.showsUserLocation = true
@@ -47,9 +49,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         mapView.addGestureRecognizer(tap)
     }
     
-    
-      func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
-        {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]){
             
             location = locations.first!
             let coordinateRegion = MKCoordinateRegion(center: location!.coordinate, latitudinalMeters: 1000, longitudinalMeters:1000)
@@ -57,23 +57,22 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             locationManager.stopUpdatingLocation()
         }
     
-     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         let renderer = MKPolylineRenderer(polyline: overlay as! MKPolyline)
         renderer.strokeColor = UIColor.blue
         renderer.lineWidth = 3;
         return renderer
     }
     
-    
-      @objc func doubleTapped(sender: UIGestureRecognizer)
-        {
+    @objc func doubleTapped(sender: UIGestureRecognizer){
            
             let locationInView = sender.location(in: mapView)
             let locationOnMap = mapView.convert(locationInView, toCoordinateFrom: mapView)
             addAnnotation(location: locationOnMap)
-        }
+        
+    }
     
-      func yourWay(){
+    func yourWay(){
         self.mapView.removeOverlays(self.mapView.overlays)
         let request = MKDirections.Request()
         request.source = MKMapItem(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: (location?.coordinate.latitude)!, longitude: (location?.coordinate.longitude)!), addressDictionary: nil))
