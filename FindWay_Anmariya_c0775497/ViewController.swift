@@ -11,8 +11,8 @@ import MapKit
 
 class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
 
-    @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var btnFindWay: UIButton!
+    @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var segmentType: UISegmentedControl!
     
     var locationManager = CLLocationManager()
@@ -126,7 +126,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             aLat = annotation.coordinate.latitude
             aLon = annotation.coordinate.longitude
             annotation.title = "Destination"
-            annotation.subtitle = "Destination"
+            annotation.subtitle = "Here is your place"
             self.mapView.addAnnotation(annotation)
         }
 }
